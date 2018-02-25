@@ -39,13 +39,13 @@ $lunch = iconv("EUC-KR","UTF-8",$html->find('tr td table tr td b', 0)->innertext
 $dinner = iconv("EUC-KR","UTF-8",$html->find('tr td table tr td b', 1)->innertext);
 
 if($lunch != ""){
-  $chatfuel->sendImage($urlImage.$html->find('img', 3)->src);
+  //$chatfuel->sendImage($urlImage.$html->find('img', 3)->src);
   //echo $urlImage.$html->find('img', 3)->src;
   $chatfuel->sendText(substr($_GET['date'], 0, 4)."년 ".substr($_GET['date'], 4, 2)."월 ".substr($_GET['date'], 6, 2)."일 점심은 ".$lunch."입니다!");
 }
 
 if($dinner != ""){
-  $chatfuel->sendImage($urlImage.$html->find('img', 5)->src);
+  //$chatfuel->sendImage($urlImage.$html->find('img', 5)->src);
   $chatfuel->sendText(substr($_GET['date'], 0, 4)."년 ".substr($_GET['date'], 4, 2)."월 ".substr($_GET['date'], 6, 2)."일 저녁은 ".$dinner."입니다!");
 }
 
