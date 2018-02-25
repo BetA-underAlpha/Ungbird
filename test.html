@@ -1,0 +1,135 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>기능 페이지</title>
+<script src="/include/script/jquery-1.8.3.min.js"></script>
+<script src="/include/script/Board_Script.js"></script>
+<script type="text/javascript" src="/include/script/Sub_Resize.js"></script>
+<script src="/common/script/ajax.js"></script>
+<!--기본 CSS 설정-->
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/JavaScript">
+<!--
+	//페이지 전환
+	function page_move(board_code, id_num, pagemode) {
+		if (id_num=="null" || id_num=="undefined"){
+			id_num = "";
+		}
+		if (pagemode=="null" || pagemode=="undefined"){
+			pagemode = "";
+		}
+		if (board_code=="null" || board_code=="undefined"){
+			board_code = "";
+		}
+
+//		alert("http://pusanjin.hs.kr/asp/" + board_code + "/FOOD_1001/main.html?siteid=pusanjinhs&boardid=" + board_code + "&uid=" + id_num + "&pagemode=" + pagemode);
+		location.href="http://pusanjin.hs.kr/asp/" + board_code + "/FOOD_1001/main.html?siteid=pusanjinhs&boardid=" + board_code + "&uid=" + id_num + "&pagemode=" + pagemode;
+	}
+
+
+	$(document).ready(function() {
+		board_resize('all');
+	});
+
+
+
+
+
+//-->
+</SCRIPT>
+</head>
+
+
+	<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="food_write" summary="식단 상세 보기">
+<caption style='visibility:hidden'>식단 상세 보기</caption>
+<thead>
+
+
+<tr>
+	<td height="60"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<th width="2%"></th>
+			<th width="34%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<td width="10%"><a href="javascript:page_move('FOOD', '20180204', 'view');"><img src="./images/food_arrow_left.gif" width="14" height="15" border="0" alt="이전글" /></a></td>
+				<td width="87%" align="center" class="food_title">2018.02.05</td>
+				<td width="3%"><a href="javascript:page_move('FOOD', '20180206', 'view');"><img src="./images/food_arrow_right.gif" width="14" height="15" border="0" alt="다음글" /></a></td>
+			</table></th>
+			<th width="2%"></th>
+			<th width="57%" align="right"><a href="javascript:page_move('FOOD', '201802', 'list');"><font style='font-weight:bold;color:#000000;'>달력보기</font></a></th>
+			<th width="5%"></th>
+		</tr>
+	</table></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td height=1 bgcolor='#cfcfcf'></td>
+</tr>
+<tr>
+  <td height=10></td>
+</tr>
+<tr>
+  <td align='center' class='gray'>
+    <B>식 단 상 세 안 내</B>
+  </td>
+</tr>
+<tr>
+  <td height=10></td>
+</tr>
+<tr>
+  <td height=1 bgcolor='#cfcfcf'></td>
+</tr>
+<tr>
+  <td height=10></td>
+</tr>
+<tr>
+  <td align='center'>
+    <table border=0 width='95%' cellpadding=0 cellspacing=0>
+      <tr>
+        <td height=1 bgcolor='#cfcfcf'></td>
+      </tr>
+      <tr>
+        <td bgcolor=#fafafa class='gray' height='20' style='padding:5px;'>
+          <img src='./images/food_icon02.gif' border=0 align='absmiddle' width='25' height='15' alt='점심' />&nbsp;
+          <b>10곡곡식밥,땡초콩나물국,뼈없는매운불닭,상추파채겉절이,배추김치,무쌈</b>
+        </td>
+      </tr>
+      <tr>
+        <td height=1 bgcolor='#cfcfcf'></td>
+      </tr>
+    <tr>
+      <td class='gray' style='padding:10px;' bgcolor='#ffffff'>
+        <img src='/hspds/Food/pusanjinhs/2월5일중식.jpg' width="600" height="449"><br/><br/>10곡곡식밥5.<br/>콩나물국5.6.13.<br/>뼈없는매운불닭5.6.12.13.<br/>상추파채겉절이5.6.13.<br/>무쌈13.<br/>배추김치9.13.<br/>873.8／34.7／162.6／10.9
+      </td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height=10 bgcolor='#ffffff'></td>
+</tr>
+<tr>
+  <td align='center'>
+    <table border=0 width='95%' cellpadding=0 cellspacing=0>
+      <tr>
+        <td height=1 bgcolor='#cfcfcf'></td>
+      </tr>
+      <tr>
+        <td bgcolor=#fafafa class='gray' height='20' style='padding:5px;'>
+          <img src='./images/food_icon03.gif' border=0 align='absmiddle' width='25' height='15' alt='저녁' />&nbsp;
+          <b>찹쌀밥,돼지국밥＆소면,크런치생선까스,부추겉절이,석박지</b>
+        </td>
+      </tr>
+    <tr>
+      <td height=1 bgcolor='#cfcfcf'></td>
+    </tr>
+      <tr>
+        <td class='gray' style='padding:10px;' bgcolor='#ffffff'>
+          <img src='/hspds/Food/pusanjinhs/2월5일석.jpg' width="600" height="450"><br/>
+          <br/>찹쌀밥<br/>돼지국밥＆소면1.5.6.10.13.<br/>크런치생선까스＆타르타르소스1.5.6.13.<br/>부추겉절이5.6.13.<br/>석박지9.13.<br/>978.3／37.9／282.5／5.1</td></tr></table></td></tr><tr><td height=10 bgcolor='#ffffff'></td></tr>
+</tbody>
+</table><iframe id="file_iframe" name="file_iframe" src="/empty.html" frameborder="0" border="0" width="0" height="0" title="파일 프로세스를 위한 빈 페이지"></iframe>
+</body>
+</html>

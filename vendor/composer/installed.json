@@ -1,0 +1,50 @@
+[
+    {
+        "name": "juno_okyo/php-chatfuel-class",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/J2TeaM/php-chatfuel-class.git",
+            "reference": "ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/J2TeaM/php-chatfuel-class/zipball/ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23",
+            "reference": "ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2017-03-10T05:54:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "juno_okyo\\": "src/juno_okyo/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Manh Tuan",
+                "email": "junookyo@gmail.com",
+                "homepage": "https://junookyo.blogspot.com/",
+                "role": "Developer"
+            }
+        ],
+        "description": "A PHP class to generate JSON output for your chatbot (build with Chatfuel)",
+        "homepage": "https://github.com/J2TeaM/php-chatfuel-class",
+        "keywords": [
+            "chatbot",
+            "chatfuel",
+            "facebook bot",
+            "json api",
+            "messenger bot"
+        ]
+    }
+]

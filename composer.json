@@ -1,0 +1,5 @@
+{
+    "require": {
+        "juno_okyo/php-chatfuel-class": "^1.0"
+    }
+}
