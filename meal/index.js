@@ -1,14 +1,24 @@
 exports.getMeal = (req, res) => {
 
-    if (req.query.date === undefined) {
-        res.status(200).json({"messages": [{"text": "Input type Error : undefined"}]});
+    var date = req.query.date;
+
+    if (date === undefined) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        if(dd<10) {
+            dd='0'+dd;
+        }
+        if(mm<10) {
+            mm='0'+mm;
+        }
+        date = yyyy + mm +dd;
     } else {
         var request = require('request');
         var cheerio = require('cheerio');
         var Iconv = require('iconv').Iconv;
 
-
-        var date = req.query.date;
 
         request({
             uri: 'http://pusanjin.hs.kr/asp/food/FOOD_1001/main.html?siteid=pusanjinhs&boardid=food&uid=' + date + '&pagemode=view',
@@ -68,7 +78,7 @@ exports.getMeal = (req, res) => {
                     }
                 }
 
-                if (count <= 1){
+                if (count <= 2){
                     res.status(200).json({
                         "messages":[
                             {"text":"엥? 급식 데이터가 없네요? 날짜를 다시 확인해주세요. 방학 및 주말인 경우에는 급식이 안나옵니다 -.= (당연)"}
