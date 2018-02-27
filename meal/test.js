@@ -28,13 +28,15 @@ request(options, function (error, response, body) {
     var dinner = text$.eq(1).html();
 
     var lunch_img = "http://pusanjin.hs.kr"+image$.eq(3).attr('src');
-    var dinner_img = "http://pusanjin.hs.kr"+image$.eq(5).attr('src');
+    var dinner_img = image$.eq(5).attr('src');
 
     console.log(lunch);
     console.log(dinner);
 
     console.log(lunch_img);
     console.log(dinner_img);
+
+    console.log(typeof dinner_img);
 
     test("hello");
 
