@@ -106,12 +106,5 @@ exports.getMeal = (req, res) => {
         }
     );
 
-
-    res.status(200).json({
-        "messages": [
-            {"text": "아...아앗! 뭔가 중간에 처리되지 않은 코드가 있는거 같아요.. uncatchedException: lastcall"}
-        ]
-    });
-
 };
   
