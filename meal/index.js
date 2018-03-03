@@ -3,7 +3,10 @@ exports.getMeal = (req, res) => {
     var date = req.query.date;
 
     if (date === "today") {
+        var tzOffset = 9;
         var today = new Date();
+        var tz = today.getTime() + (today.getTimezoneOffset() * 60000) + (tzOffset * 3600000);
+        today.setTime(tz);
         var dd = today.getDate();
         var mm = today.getMonth() + 1; //January is 0!
         var yyyy = today.getFullYear();
@@ -13,7 +16,9 @@ exports.getMeal = (req, res) => {
         if (mm < 10) {
             mm = '0' + mm;
         }
-        date = yyyy + mm + dd;
+        date = yyyy + mm + dd + today.getHours() + today.getMinutes();
+
+        res.status(200).json({"messages": [{"text": date}]});
     }
 
     var request = require('request');
