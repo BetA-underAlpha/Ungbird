@@ -16,9 +16,7 @@ exports.getMeal = (req, res) => {
         if (mm < 10) {
             mm = '0' + mm;
         }
-        date = yyyy + mm + dd + today.getHours() + today.getMinutes();
-
-        res.status(200).json({"messages": [{"text": date}]});
+        date = yyyy + mm + dd;
     }
 
     var request = require('request');
