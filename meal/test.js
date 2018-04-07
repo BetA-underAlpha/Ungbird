@@ -2,88 +2,80 @@ var request = require('request');
 var cheerio = require('cheerio');
 var Iconv = require('iconv').Iconv;
 
-var date = null;
+//var word_iconv = new Iconv('cp949', 'utf-8');
+var word = '배고프다';
+word = encodeURI(word);
 
-console.log(date);
+//word = word_iconv.convert(word);
 request({
-        uri: 'http://pusanjin.hs.kr/asp/food/FOOD_1001/main.html?siteid=pusanjinhs&boardid=food&uid=' + date + '&pagemode=view',
-        encoding: null
+        uri: 'http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query=' + word//req.query.word,
+        //encoding: null
     }, function (error, response, body) {
+        //console.log(word);
+        //console.log(body);
 
+        try{
 
-        if (error) {
-            res.status(200).json({"messages": [{"text": "Req err : "+error}]});
-        } else {
-            var iconv = new Iconv('euc-kr', 'utf-8');
+            if (error) {
+                console.log("first : " + error);
+                //res.status(200).json({"messages": [{"text": "아이쿠, 에러가 발생했네요...ㅠ reqException: " + error}]});
+            } else {
+                //var iconv = new Iconv('euc-kr', 'utf-8');
+                //const $ = cheerio.load(iconv.convert(body).toString(), {decodeEntities: false});
+                const $ = cheerio.load(body, {decodeEntities: false});
+                const kind$ = $(".fnt_k09");
+                const mean$ = $(".fnt_k05");
+                const submean$ = $(".fnt_k22");
+                const moremean$ = $(".fnt_k14");
+                const uri$ = $(".fnt_e30").eq(0).find("a");
 
-            const $ = cheerio.load(iconv.convert(body).toString(),{decodeEntities: false});
-            const text$ = $("tr").find("td").find("table").find("tr").find("td").find("b");
-            const image$ = $('img');
+                var checknull = mean$.eq(0).html();
+                if (checknull === null || checknull === ""){
+                    console.log("결과 없음");
+                } else {
 
-            var lunch = text$.eq(0).html();
-            var dinner = text$.eq(1).html();
-            var lunch_img = image$.eq(3).attr('src');
-            var dinner_img = image$.eq(5).attr('src');
+                    //console.log(uri$.eq(0).html());
+                    var meaning = kind$.eq(0).html().toString() + " " + mean$.eq(0).html().toString();
+                    var uri = "http://endic.naver.com" + uri$.attr("href");
+                    var submeaning = "";
+                    var moremean = "";
 
-            var year = date.substr(0,4);
-            var month = date.substr(4,2);
-            var day = date.substr(6,2);
-
-            console.log(lunch);
-            console.log(dinner);
-            console.log(lunch_img);
-            console.log(dinner_img);
-
-            var lunch_msg_json = {"text" : year + "년 " + month + "월 " + day + "일의 점심 메뉴는 " + lunch + "입니다."};
-            var dinner_msg_json = {"text" : year + "년 " + month + "월 " + day + "일의 저녁 메뉴는 " + dinner + "입니다."};
-            var lunch_img_json = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": "http://pusanjin.hs.kr" + lunch_img
+                    if(!(moremean$.eq(0).html() === null || moremean$.eq(0).html()==="" || moremean$.eq(0).html() === undefined)){
+                        moremean = moremean$.eq(0).html() + "개의 뜻 더보기";
                     }
-                }
-            };
-            var dinner_img_json = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": "http://pusanjin.hs.kr" + dinner_img
+
+
+                    for (var i = 1; i<submean$.length+1; i++){
+                        var testmean = submean$.eq(i).html().toString();
+                        if(testmean.indexOf("</") !== -1){
+                            break;
+                        }
+                        submeaning = submeaning + submean$.eq(i).html().toString();
                     }
+
+
+                    //console.log(mean$.html().toString());
+                    console.log(meaning);
+                    console.log(submeaning);
+                    console.log(uri);
+                    console.log(moremean);
+
                 }
-            };
 
 
-            var json_content = [];
-            var check_list = [lunch_img, lunch, dinner_img, dinner];
-            var json_list = [lunch_img_json,lunch_msg_json, dinner_img_json, dinner_msg_json];
-            var count = 0;
 
 
-            for (i = 0; i<4; i++){
-                if(check_list[i] !== null && check_list[i] !== undefined){
-                    json_content.push(json_list[i]);
-                    count++;
-                }
             }
 
-            console.log(count)
-
-            /*if (count === 0){
-                res.status(200).json({
-                    "messages":[
-                        {"text":"엥? 급식 데이터가 없네요? 날짜를 다시 확인해주세요. 방학 및 주말인 경우에는 급식이 안나옵니다 -.= (당연)"}
-                    ]
-                })
-            }
-            res.status(200).json({
-                "messages": json_content,
+        } catch(exception){
+            /*res.status(200).json({
+                "messages": [
+                    {"text": "아...아앗! 뭔가 오류가 발생했어요... catchedException: " + exception}
+                ]
             });*/
-
-
-
-
+            console.log(exception);
 
         }
+
     }
 );

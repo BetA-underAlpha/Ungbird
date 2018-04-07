@@ -91,7 +91,7 @@ exports.getMeal = (req, res) => {
                         });
                     }
                     res.status(200).json({
-                        "messages": json_content,
+                        "messages": json_content
                     });
 
 
